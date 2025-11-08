@@ -15,7 +15,8 @@ export const ImagesSlider = ({
   direction = "up",
 }: {
   images: string[];
-  children: React.ReactNode;
+  // FIX: Made `children` prop optional to resolve a TypeScript error where it was incorrectly reported as missing.
+  children?: React.ReactNode;
   overlay?: boolean;
   overlayClassName?: string;
   className?: string;

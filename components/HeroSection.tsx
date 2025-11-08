@@ -5,10 +5,10 @@ import { ImagesSlider } from './ui/images-slider';
 
 const HeroSection: React.FC = () => {
     const images = [
-        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1920&auto=format&fit=crop", // Team working
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1920&auto=format&fit=crop", // Modern office
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1920&auto=format&fit=crop", // Presentation
-        "https://images.unsplash.com/photo-1616594418293-845a783d78b8?q=80&w=1920&auto=format&fit=crop", // Interior design shot
+        "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1920&auto=format&fit=crop", // High fashion shot
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920&auto=format&fit=crop", // Modern interior design
+        "https://images.unsplash.com/photo-1515502235033-22c2a1e0b583?q=80&w=1920&auto=format&fit=crop", // Fashion designer working
+        "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?q=80&w=1920&auto=format&fit=crop", // Stylish room interior
     ];
 
     return (

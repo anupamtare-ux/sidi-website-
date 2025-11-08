@@ -95,16 +95,20 @@ const AiPlaygroundSection: React.FC = () => {
         setMood('Ethereal');
         setGeneratedImage(null);
         setError(null);
-        const imageUrl = 'https://images.unsplash.com/photo-1588891983220-15174a362242?q=80&w=800&auto=format&fit=crop';
-        // To use this in the API, we need it as a File object. We'll fetch it.
+        // Load image from local assets to avoid CORS issues.
+        // Please add `example-chair.jpg` to your project's public folder.
+        const imageUrl = '/example-chair.jpg';
         try {
             const response = await fetch(imageUrl);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch local image: ${response.statusText}`);
+            }
             const blob = await response.blob();
             const file = new File([blob], "example-chair.jpg", { type: blob.type });
             setOriginalImage({ url: URL.createObjectURL(file), file });
         } catch(e) {
             console.error("Failed to load example image", e);
-            setError("Could not load the example image.");
+            setError("Could not load the example image. Make sure 'example-chair.jpg' is in your public folder.");
         }
     };
 

@@ -3,10 +3,13 @@ import type { Program } from '../types';
 import { GlowCard } from './ui/spotlight-card';
 
 const programsData: Program[] = [
-    { title: 'Fashion Design', duration: '3 Years, B.Des', imageUrl: 'https://images.unsplash.com/photo-1551803091-e2ab6552ae1e?q=80&w=800&h=1000&auto=format&fit=crop' },
-    { title: 'Interior Design', duration: '3 Years, B.Des', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=800&h=1000&auto=format&fit=crop' },
+    { title: 'Fashion Design', duration: '3 Years, B.Des', imageUrl: 'https://i.pinimg.com/736x/58/5b/62/585b62584e2d01119f854d556aeb4516.jpg' },
+    { title: 'Interior Design', duration: '3 Years, B.Des', imageUrl: 'https://i.pinimg.com/1200x/30/c8/c4/30c8c4d796bafbdeec26cfbd161fb2ed.jpg' },
+    { title: 'Product Design', duration: '3 Years, B.Des', imageUrl: 'https://i.pinimg.com/736x/10/3f/4b/103f4b850a0a0283c9534749d06c5468.jpg' },
+    { title: 'Communication Design', duration: '2 Years, Diploma', imageUrl: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=800&h=1000&auto=format&fit=crop' },
+    { title: 'Fashion Management', duration: '2 Years, MBA', imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&h=1000&auto=format&fit=crop' },
+    { title: 'Graphic Design', duration: '2 Years, Diploma', imageUrl: 'https://i.pinimg.com/1200x/1a/b8/80/1ab880e94c978beb8ec1de80e7958cd5.jpg' },
     { title: 'Online Learning (SIDI+)', duration: '6 Months, Certificate', imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&h=1000&auto=format&fit=crop', isNew: true },
-    { title: 'Graphic Design', duration: '2 Years, Diploma', imageUrl: 'https://images.unsplash.com/photo-1629752187681-440d73a936d9?q=80&w=800&h=1000&auto=format&fit=crop' },
 ];
 
 const ProgramCard: React.FC<{ program: Program }> = ({ program }) => (
@@ -37,10 +40,17 @@ const ProgramsSection: React.FC = () => {
                     <p className="max-w-2xl mx-auto text-lg text-sidi-black/70 mt-4">Craft your future with our industry-focused design programs.</p>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 auto-rows-[500px]">
-                    {programsData.map((program, index) => (
-                        <ProgramCard key={index} program={program} />
+                    {programsData.slice(0, 4).map((program) => (
+                         <ProgramCard key={program.title} program={program} />
                     ))}
                 </div>
+                {programsData.length > 4 &&
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-[500px] mt-8">
+                         {programsData.slice(4).map((program) => (
+                            <ProgramCard key={program.title} program={program} />
+                        ))}
+                    </div>
+                }
             </div>
         </section>
     );

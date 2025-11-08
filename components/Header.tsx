@@ -10,7 +10,6 @@ const Header: React.FC = () => {
         { name: 'Home', href: '#home' },
         { name: 'About', href: '#about' },
         { name: 'Programs', href: '#programs' },
-        { name: 'Admissions', href: '#admissions' },
         { name: 'Gallery', href: '#gallery' },
         { name: 'Placements', href: '#placements' },
         { name: 'Contact', href: '#contact' },
@@ -24,6 +23,16 @@ const Header: React.FC = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        setIsOpen(false); // Close mobile menu on click
+    };
+
     const headerClass = isScrolled 
         ? 'bg-sidi-white/80 backdrop-blur-lg shadow-lg' 
         : 'bg-transparent';
@@ -32,17 +41,17 @@ const Header: React.FC = () => {
     return (
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerClass}`}>
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#home" className={`text-3xl font-poppins font-bold tracking-tighter transition-colors duration-300 ${linkColor}`}>
+                <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className={`text-3xl font-poppins font-bold tracking-tighter transition-colors duration-300 ${linkColor}`}>
                     SIDI.
                 </a>
                 <nav className="hidden lg:flex items-center space-x-8">
                     {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className={`font-medium hover:text-sidi-orange transition-colors duration-300 ${linkColor}`}>
+                        <a key={link.name} href={link.href} onClick={(e) => handleNavClick(e, link.href)} className={`font-medium hover:text-sidi-orange transition-colors duration-300 ${linkColor}`}>
                             {link.name}
                         </a>
                     ))}
                 </nav>
-                 <a href="#admissions" className="hidden lg:inline-block bg-sidi-orange text-white font-poppins px-6 py-2 rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">
+                 <a href="#admissions" onClick={(e) => handleNavClick(e, '#admissions')} className="hidden lg:inline-block bg-sidi-orange text-white font-poppins px-6 py-2 rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">
                     Apply Now
                 </a>
                 <div className="lg:hidden">
@@ -55,7 +64,7 @@ const Header: React.FC = () => {
             {/* Mobile Menu */}
             <div className={`lg:hidden fixed top-0 left-0 w-full h-full bg-sidi-white/95 backdrop-blur-xl transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                  <div className="flex justify-between items-center p-6 border-b border-gray-200">
-                    <a href="#home" onClick={() => setIsOpen(false)} className="text-3xl font-poppins font-bold text-sidi-black tracking-tighter">
+                    <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-3xl font-poppins font-bold text-sidi-black tracking-tighter">
                         SIDI.
                     </a>
                     <button onClick={() => setIsOpen(false)} aria-label="Close menu" className="text-sidi-black">
@@ -64,11 +73,11 @@ const Header: React.FC = () => {
                 </div>
                 <nav className="flex flex-col items-center justify-center h-[calc(100%-80px)] space-y-8">
                     {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} onClick={() => setIsOpen(false)} className="text-3xl font-poppins text-sidi-black hover:text-sidi-orange transition-colors duration-300">
+                        <a key={link.name} href={link.href} onClick={(e) => handleNavClick(e, link.href)} className="text-3xl font-poppins text-sidi-black hover:text-sidi-orange transition-colors duration-300">
                             {link.name}
                         </a>
                     ))}
-                     <a href="#admissions" onClick={() => setIsOpen(false)} className="bg-sidi-orange text-white font-poppins px-8 py-4 rounded-lg text-xl hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 mt-8">
+                     <a href="#admissions" onClick={(e) => handleNavClick(e, '#admissions')} className="bg-sidi-orange text-white font-poppins px-8 py-4 rounded-lg text-xl hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 mt-8">
                         Apply Now
                     </a>
                 </nav>
