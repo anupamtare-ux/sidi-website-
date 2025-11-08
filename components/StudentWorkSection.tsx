@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import type { StudentWork } from '../types';
 
 const workData: StudentWork[] = [
-    { id: 1, category: 'Fashion', imageUrl: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop' },
-    { id: 2, category: 'Interiors', imageUrl: 'https://images.unsplash.com/photo-1530018607932-654560a2d5b8?q=80&w=800&auto=format&fit=crop' },
-    { id: 3, category: 'Workshops', imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=800&auto=format&fit=crop' },
-    { id: 4, category: 'Exhibitions', imageUrl: 'https://images.unsplash.com/photo-1543168256-41881f5281d8?q=80&w=600&auto=format&fit=crop' },
-    { id: 5, category: 'Fashion', imageUrl: 'https://images.unsplash.com/photo-1585255318859-f5c71e1a83e7?q=80&w=700&auto=format&fit=crop' },
-    { id: 6, category: 'Interiors', imageUrl: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=900&auto=format&fit=crop' },
-    { id: 7, 'category': 'Fashion', 'imageUrl': 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=600&auto=format&fit=crop' },
-    { id: 8, 'category': 'Workshops', 'imageUrl': 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop' },
+    { id: 1, category: 'Fashion', imageUrl: 'https://images.unsplash.com/photo-1581338834647-b0fb40704e21?q=80&w=800&auto=format&fit=crop' },
+    { id: 2, category: 'Interiors', imageUrl: 'https://images.unsplash.com/photo-1537726235470-8504e3b77cb1?q=80&w=900&auto=format&fit=crop' },
+    { id: 3, category: 'Workshops', imageUrl: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop' },
+    { id: 4, category: 'Exhibitions', imageUrl: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=800&auto=format&fit=crop' },
+    { id: 5, category: 'Fashion', imageUrl: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=800&auto=format&fit=crop' },
+    { id: 6, category: 'Interiors', imageUrl: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=800&auto=format&fit=crop' },
+    { id: 7, 'category': 'Workshops', 'imageUrl': 'https://images.unsplash.com/photo-1519452575417-5e04442f4def?q=80&w=800&auto=format&fit=crop' },
+    { id: 8, 'category': 'Exhibitions', 'imageUrl': 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=800&auto=format&fit=crop' },
 ];
 
 const categories: (StudentWork['category'] | 'All')[] = ['All', 'Fashion', 'Interiors', 'Workshops', 'Exhibitions'];

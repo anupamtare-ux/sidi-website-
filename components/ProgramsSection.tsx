@@ -3,10 +3,10 @@ import type { Program } from '../types';
 import { GlowCard } from './ui/spotlight-card';
 
 const programsData: Program[] = [
-    { title: 'Fashion Design', duration: '3 Years, B.Des', imageUrl: 'https://images.unsplash.com/photo-1551803091-e2525853ae8b?q=80&w=800&h=1000&auto=format&fit=crop' },
+    { title: 'Fashion Design', duration: '3 Years, B.Des', imageUrl: 'https://images.unsplash.com/photo-1551803091-e2ab6552ae1e?q=80&w=800&h=1000&auto=format&fit=crop' },
     { title: 'Interior Design', duration: '3 Years, B.Des', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=800&h=1000&auto=format&fit=crop' },
-    { title: 'Online Learning (SIDI+)', duration: '6 Months, Certificate', imageUrl: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800&h=1000&auto=format&fit=crop', isNew: true },
-    { title: 'Graphic Design', duration: '2 Years, Diploma', imageUrl: 'https://images.unsplash.com/photo-1603349206295-dde20617cb7a?q=80&w=800&h=1000&auto=format&fit=crop' },
+    { title: 'Online Learning (SIDI+)', duration: '6 Months, Certificate', imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&h=1000&auto=format&fit=crop', isNew: true },
+    { title: 'Graphic Design', duration: '2 Years, Diploma', imageUrl: 'https://images.unsplash.com/photo-1629752187681-440d73a936d9?q=80&w=800&h=1000&auto=format&fit=crop' },
 ];
 
 const ProgramCard: React.FC<{ program: Program }> = ({ program }) => (

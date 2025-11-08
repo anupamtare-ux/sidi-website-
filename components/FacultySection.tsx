@@ -2,10 +2,10 @@ import React from 'react';
 import type { FacultyMember } from '../types';
 
 const facultyData: FacultyMember[] = [
-    { name: 'Dr. Anjali Sharma', specialization: 'Head of Fashion', philosophy: 'Design is intelligence made visible.', imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=400&auto=format&fit=crop' },
-    { name: 'Rohan Mehta', specialization: 'Interior Architecture', philosophy: 'We shape our buildings; thereafter they shape us.', imageUrl: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400&h=400&auto=format&fit=crop' },
-    { name: 'Priya Singh', specialization: 'Textile Innovation', philosophy: 'Creativity is a wild mind and a disciplined eye.', imageUrl: 'https://images.unsplash.com/photo-1542740348-39501a69525a?q=80&w=400&h=400&auto=format&fit=crop' },
-    { name: 'Vikram Patel', specialization: 'Digital Design', philosophy: 'Simplicity is the ultimate sophistication.', imageUrl: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400&h=400&auto=format&fit=crop' },
+    { name: 'Dr. Anjali Sharma', specialization: 'Head of Fashion', philosophy: 'Design is intelligence made visible.', imageUrl: 'https://images.unsplash.com/photo-1580894742443-029a1b44293a?q=80&w=400&h=400&auto=format&fit=crop' },
+    { name: 'Rohan Mehta', specialization: 'Interior Architecture', philosophy: 'We shape our buildings; thereafter they shape us.', imageUrl: 'https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=400&h=400&auto=format&fit=crop' },
+    { name: 'Priya Singh', specialization: 'Textile Innovation', philosophy: 'Creativity is a wild mind and a disciplined eye.', imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&h=400&auto=format&fit=crop' },
+    { name: 'Vikram Patel', specialization: 'Digital Design', philosophy: 'Simplicity is the ultimate sophistication.', imageUrl: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=400&h=400&auto=format&fit=crop' },
 ];
 
 const FacultyCard: React.FC<{ member: FacultyMember }> = ({ member }) => (

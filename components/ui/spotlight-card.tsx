@@ -37,24 +37,24 @@ const GlowCard: React.FC<GlowCardProps> = ({
   const innerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    
     let targetX = window.innerWidth / 2;
     let targetY = window.innerHeight / 2;
     let currentX = window.innerWidth / 2;
     let currentY = window.innerHeight / 2;
-    const speed = 0.08; // Easing factor for smoothness
+    const speed = 0.08;
     let animationFrameId: number;
 
     const moveSpotlight = () => {
-        // Linearly interpolate current position towards target
         currentX += (targetX - currentX) * speed;
         currentY += (targetY - currentY) * speed;
 
-        if (cardRef.current) {
-            cardRef.current.style.setProperty('--x', currentX.toFixed(2));
-            cardRef.current.style.setProperty('--xp', (currentX / window.innerWidth).toFixed(2));
-            cardRef.current.style.setProperty('--y', currentY.toFixed(2));
-            cardRef.current.style.setProperty('--yp', (currentY / window.innerHeight).toFixed(2));
-        }
+        card.style.setProperty('--x', currentX.toFixed(2));
+        card.style.setProperty('--xp', (currentX / window.innerWidth).toFixed(2));
+        card.style.setProperty('--y', currentY.toFixed(2));
+        card.style.setProperty('--yp', (currentY / window.innerHeight).toFixed(2));
 
         animationFrameId = requestAnimationFrame(moveSpotlight);
     };
@@ -63,11 +63,24 @@ const GlowCard: React.FC<GlowCardProps> = ({
         targetX = e.clientX;
         targetY = e.clientY;
     };
+    
+    const onMouseEnter = () => {
+        document.addEventListener('pointermove', syncPointer);
+    };
+    
+    const onMouseLeave = () => {
+        document.removeEventListener('pointermove', syncPointer);
+        targetX = window.innerWidth / 2;
+        targetY = window.innerHeight / 2;
+    };
 
-    document.addEventListener('pointermove', syncPointer);
+    card.addEventListener('mouseenter', onMouseEnter);
+    card.addEventListener('mouseleave', onMouseLeave);
     animationFrameId = requestAnimationFrame(moveSpotlight);
 
     return () => {
+        card.removeEventListener('mouseenter', onMouseEnter);
+        card.removeEventListener('mouseleave', onMouseLeave);
         document.removeEventListener('pointermove', syncPointer);
         cancelAnimationFrame(animationFrameId);
     };

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import type { Testimonial } from '../types';
 
 const testimonialsData: Testimonial[] = [
-    { name: 'Aisha Khan', quote: 'SIDI gave me the confidence to launch my own label. The faculty are true mentors.', outcome: 'Founder, AK Designs', imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&h=200&auto=format&fit=crop' },
-    { name: 'Ravi Kumar', quote: 'The practical workshops were a game-changer. I was industry-ready before I even graduated.', outcome: 'Interior Designer, XYZ Studio, Milan', imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop' },
-    { name: 'Sunita Sharma', quote: 'The collaborative environment at SIDI is incredible. I built a network for life.', outcome: 'Lead UX Designer, Innovate Co.', imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&h=200&auto=format&fit=crop' },
+    { name: 'Aisha Khan', quote: 'SIDI gave me the confidence to launch my own label. The faculty are true mentors.', outcome: 'Founder, AK Designs', imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&h=200&auto=format&fit=crop' },
+    { name: 'Ravi Kumar', quote: 'The practical workshops were a game-changer. I was industry-ready before I even graduated.', outcome: 'Interior Designer, XYZ Studio, Milan', imageUrl: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&h=200&auto=format&fit=crop' },
+    { name: 'Sunita Sharma', quote: 'The collaborative environment at SIDI is incredible. I built a network for life.', outcome: 'Lead UX Designer, Innovate Co.', imageUrl: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=200&h=200&auto=format&fit=crop' },
 ];
 
 const TestimonialsSection: React.FC = () => {

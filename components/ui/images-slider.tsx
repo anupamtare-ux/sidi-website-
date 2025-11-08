@@ -23,8 +23,7 @@ export const ImagesSlider = ({
   direction?: "up" | "down";
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [loadedImages, setLoadedImages] = useState<string[]>([]);
+  const [isInitialImageLoaded, setIsInitialImageLoaded] = useState(false);
 
   const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) =>
@@ -38,27 +37,31 @@ export const ImagesSlider = ({
     );
   }, [images.length]);
 
+  // Effect to load the initial image and start the slider
   useEffect(() => {
-    const loadImages = () => {
-        setLoading(true);
-        const loadPromises = images.map((image) => {
-          return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.src = image;
-            img.onload = () => resolve(image);
-            img.onerror = reject;
-          });
-        });
-
-        Promise.all(loadPromises)
-          .then((loadedImages) => {
-            setLoadedImages(loadedImages as string[]);
-            setLoading(false);
-          })
-          .catch((error) => console.error("Failed to load images", error));
+    if (images && images.length > 0) {
+      const img = new Image();
+      img.src = images[0];
+      img.onload = () => {
+        setIsInitialImageLoaded(true);
       };
-    loadImages();
+      img.onerror = (error) => {
+        console.error("Failed to load initial slider image", error);
+        // still render the slider, even if the first image is broken, so children are visible
+        setIsInitialImageLoaded(true); 
+      }
+    }
   }, [images]);
+
+  // Effect to preload the next image for a smooth transition
+  useEffect(() => {
+    if (isInitialImageLoaded && images.length > 1) {
+      const nextImageIndex = (currentIndex + 1) % images.length;
+      const img = new Image();
+      img.src = images[nextImageIndex];
+    }
+  }, [currentIndex, images, isInitialImageLoaded]);
+
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -72,7 +75,8 @@ export const ImagesSlider = ({
     window.addEventListener("keydown", handleKeyDown);
 
     let interval: any;
-    if (autoplay) {
+    // Start autoplay only after the first image has loaded
+    if (autoplay && isInitialImageLoaded) {
       interval = setInterval(() => {
         handleNext();
       }, 5000);
@@ -82,7 +86,7 @@ export const ImagesSlider = ({
       window.removeEventListener("keydown", handleKeyDown);
       clearInterval(interval);
     };
-  }, [autoplay, handleNext, handlePrevious]);
+  }, [autoplay, handleNext, handlePrevious, isInitialImageLoaded]);
 
   const slideVariants = {
     initial: {
@@ -116,7 +120,7 @@ export const ImagesSlider = ({
     },
   };
 
-  const areImagesLoaded = loadedImages.length > 0;
+  const areImagesLoaded = isInitialImageLoaded;
 
   return (
     <div
@@ -139,7 +143,7 @@ export const ImagesSlider = ({
         <AnimatePresence>
           <motion.img
             key={currentIndex}
-            src={loadedImages[currentIndex]}
+            src={images[currentIndex]}
             initial="initial"
             animate="visible"
             exit={direction === "up" ? "upExit" : "downExit"}
